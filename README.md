@@ -1,0 +1,2 @@
+# Gestalt
+RESTful configuration manager
