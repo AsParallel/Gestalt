@@ -8,10 +8,16 @@ using System.Reflection;
 using Gestalt.Abstractions;
 using Microsoft.Framework.Runtime;
 using Microsoft.AspNet.Mvc.Infrastructure;
+using Gestalt.DataAccess;
+using MongoDB.Driver;
+using System.Configuration;
+using Microsoft.Extensions.OptionsModel;
+using Gestalt.AppSettings;
+using Microsoft.Framework.ConfigurationModel.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ZO.Gestalt.Core.Registration
 {
-
     public static class Registrar
     {
         private static List<Assembly> assemblies = new List<Assembly>();
@@ -47,6 +53,25 @@ namespace ZO.Gestalt.Core.Registration
                 .ForEach(schema => builder.RegisterType(schema)
                 .AsSelf());
             });
+
+            ///Mongo
+            /////TODO When the 5.0 assemblies drop for this and autofac, move this builder registration portion to the Mongo assembly
+            var mongoSettings = JObject.Parse(ConfigurationManager.AppSettings.Get("Mongo")).ToObject<MongoConfiguration>();
+            builder.Register(x =>
+            {
+                return mongoSettings;
+            }).As<IMongoConfiguration>();
+            builder.RegisterGeneric(typeof(MongoDBContext<>))
+           .As(typeof(IMongoDBContext<>))
+           .InstancePerLifetimeScope();
+
+            builder.Register(x =>
+            {
+                return new MongoClient(mongoSettings.ConnectionString);
+
+            })
+                 .As<IMongoClient>().SingleInstance();
+
             return builder.Build();
         }
     }

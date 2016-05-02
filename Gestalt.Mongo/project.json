@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-*",
+  "description": "Gestalt.Mongo Class Library",
+  "authors": [ "Kitty" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+      "dependencies": {
+        "MongoDB.Driver": "2.2.3"
+      },
+      "frameworkAssemblies": {
+        "System.configuration": "4.0.0.0"
+      }
+    }
+  },
+  "dependencies": {
+    "Gestalt.Abstractions": "1.0.0-*",
+    "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final"
+  }
+}

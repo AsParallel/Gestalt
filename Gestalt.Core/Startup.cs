@@ -7,6 +7,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Gestalt.AppSettings;
 
 namespace Gestalt.Core
 {
@@ -33,6 +34,8 @@ namespace Gestalt.Core
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            //Mongo settings registration
+            services.Configure<Gestalt.AppSettings.MongoConfiguration>(Configuration.GetSection("Mongo"));
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
