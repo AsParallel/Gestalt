@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Gestalt.Abstractions
 {
-    public interface IGestaltConfigurationRepository<T>
+    public interface IGestaltConfigurationRepository<T> where T : IGestaltConfigurationSchema
     {
         void GetConfiguration(string id);
         void GetConfiguration(string id, string version);

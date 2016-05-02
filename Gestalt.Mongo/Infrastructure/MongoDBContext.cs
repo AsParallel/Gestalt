@@ -4,11 +4,10 @@ using System.Threading;
 using System;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Gestalt.DataAccess;
 using Microsoft.Extensions.OptionsModel;
 using Gestalt.AppSettings;
 
-namespace Gestalt.DataAccess
+namespace Gestalt.Mongo
 {
     /// <summary>
     /// Provides the ORM access for MongoDB. Maintains clientless

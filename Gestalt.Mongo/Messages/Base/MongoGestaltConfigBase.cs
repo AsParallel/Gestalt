@@ -18,5 +18,6 @@ namespace Gestalt.Mongo.Messages.Base
         public string Id { get; set; }
 
         public string Version { get; set; }
+        public string Application { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Gestalt.DataAccess
+namespace Gestalt.Mongo
 {
     public interface IMongoDBContext<T>
     {

@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>7024b794-6656-4243-9b77-026b57dd201a</ProjectGuid>
-    <RootNamespace>Gestalt.Core</RootNamespace>
+    <ProjectGuid>45db7687-3863-4fd0-b91c-55dfdcc9c35d</ProjectGuid>
+    <RootNamespace>Gestalt.Autofac</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>

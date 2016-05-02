@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-*",
-  "description": "Gestalt.Mongo Class Library",
+  "description": "Gestalt.Mongo.Autofac Class Library",
   "authors": [ "Kitty" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -8,6 +8,7 @@
   "frameworks": {
     "net451": {
       "dependencies": {
+        "Gestalt.Mongo": "1.0.0-*",
         "MongoDB.Driver": "2.2.3"
       },
       "frameworkAssemblies": {
@@ -16,8 +17,9 @@
     }
   },
   "dependencies": {
+    "Autofac": "4.0.0-rc1-177",
     "Gestalt.Abstractions": "1.0.0-*",
-    "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
+    "Gestalt.Core": "1.0.0-*",
     "Newtonsoft.Json": "8.0.3"
   }
 }

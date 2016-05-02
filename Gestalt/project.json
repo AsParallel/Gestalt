@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0-*",
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Autofac": "4.0.0-rc1-177",
+    "Autofac.Framework.DependencyInjection": "4.0.0-beta8-157",
+    "Autofac.Extensions.DependencyInjection": "4.0.0-rc1-177",
+    "Gestalt.Abstractions": "1.0.0-*",
+    "Gestalt.Mongo": "1.0.0-*",
+    "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
+    "Newtonsoft.Json": "8.0.3",
+    "Gestalt.Core": "1.0.0-*",
+    "Gestalt.Autofac": "1.0.0-*",
+    "Gestalt.Mongo.Autofac": "1.0.0-*"
+  },
+
+  "commands": {
+    "web": "Microsoft.AspNet.Server.Kestrel"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "Swashbuckle.Core": "5.3.2"
+      }
+    }
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules"
+  ],
+  "publishExclude": [
+    "**.user",
+    "**.vspscc"
+  ]
+}

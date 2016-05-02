@@ -9,6 +9,7 @@ namespace Gestalt.Abstractions
     public interface IGestaltConfigurationSchema
     {
         string Id { get; set; }
+        string Application { get; set; }
         string Environment { get; set; }
         string Version { get; set; }
     }

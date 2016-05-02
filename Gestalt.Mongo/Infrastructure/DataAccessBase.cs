@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestalt.DataAccess
+namespace Gestalt.Mongo
 {
     public abstract class DataAccessBase<T> : IDataAccessBase<T>
    { 
