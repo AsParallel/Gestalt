@@ -6,6 +6,7 @@
 
   "dependencies": {
     "Autofac.Dnx": "4.0.0-alpha2",
+    "Gestalt.Abstractions": "1.0.0-*",
     "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
