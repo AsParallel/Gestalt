@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5BA7B005-2229-4D24-9A3F-9D5CFD7895D4}"
 	ProjectSection(SolutionItems) = preProject
-		ZO.Gestalt\global.json = ZO.Gestalt\global.json
+		Gestalt\global.json = Gestalt\global.json
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Gestalt.Abstractions", "Gestalt.Abstractions\Gestalt.Abstractions.xproj", "{16C5DBD5-FE22-48C9-95A3-B5B6C81432B6}"
