@@ -25,20 +25,23 @@ namespace Gestalt.ControllerFactory
             if (actionContext.RouteData.DataTokens.Keys.Contains("Application"))
             {
                 Type controllerType = Type.GetType("ConfigurationService").MakeGenericType(resolver.GetSchema(actionContext.RouteData.DataTokens["Application"].ToString()));
-                return Activator.CreateInstance(controllerType);
+                var args = controllerType.GetGenericArguments();
+                return Activator.CreateInstance(controllerType,args.Select(x=>container.Resolve(x)));
             }
             else {
                 //TODO gracefully handle this exit
                 actionContext.HttpContext.Response.StatusCode = 400;
-
                 return null;
             }
-
         }
 
         public void ReleaseController(object controller)
         {
-            //no functionality
+            var disposable = controller as IDisposable;
+            if (disposable != null)
+            {
+                disposable.Dispose();
+            }
         }
     }
 }

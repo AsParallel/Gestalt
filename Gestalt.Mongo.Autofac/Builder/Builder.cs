@@ -8,15 +8,18 @@ namespace Gestalt.Mongo.Builder
 {
     public class Builder: Module
     {
+        private AppSettings.MongoConfiguration config;
+
+        public Builder(AppSettings.MongoConfiguration config)
+        {
+            this.config = config;
+        }
         protected override void Load(ContainerBuilder builder)
         {
-            ///Mongo
-            /////TODO When the 5.0 assemblies drop for this and autofac, move this builder registration portion to the Mongo assembly
-            var mongoSettings = JObject.Parse(ConfigurationManager.AppSettings.Get("Mongo")).ToObject<MongoConfiguration>();
 
             builder.Register(x =>
             {
-                return mongoSettings;
+                return config;
             }).As<IMongoConfiguration>();
             builder.RegisterGeneric(typeof(MongoDBContext<>))
            .As(typeof(IMongoDBContext<>))
@@ -24,7 +27,7 @@ namespace Gestalt.Mongo.Builder
 
             builder.Register(x =>
             {
-                return new MongoClient(mongoSettings.ConnectionString);
+                return new MongoClient(config.ConnectionString);
 
             })
                  .As<IMongoClient>().SingleInstance();

@@ -35,6 +35,12 @@ namespace Gestalt.Autofac
             return b;
         }
 
+        public static ContainerBuilder RegisterAll(ContainerBuilder b)
+        {
+            builders.ForEach(builder => b.RegisterModule(builder));
+            return b;
+        }
+
         /// <summary>
         /// Returns the IContainer
         /// </summary>

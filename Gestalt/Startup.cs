@@ -8,6 +8,8 @@ using Autofac.Framework.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using System;
+using Microsoft.Extensions.OptionsModel;
+using System.Collections.Generic;
 
 namespace Gestalt
 {
@@ -26,7 +28,7 @@ namespace Gestalt
             }
 
             builder.AddEnvironmentVariables();
-            Configuration = builder.Build().ReloadOnChanged("appsettings.json");
+            Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -38,22 +40,26 @@ namespace Gestalt
             services.AddMvc();
             IContainer container = null;
             //Mongo settings registration
+
+            ContainerBuilder builder = new ContainerBuilder();
+
             services.Configure<Gestalt.AppSettings.MongoConfiguration>(Configuration.GetSection("Mongo"));
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            //add autofac registrations
-            //This has a pretty low manageability score, because of exhaustive strong coupling, but it is what it is
-            //TODO define less aggressive module registration practices
-            AutofacModuleRegistrationHelper.RegisterModule(new Autofac.Builder.Builder(container));
-            AutofacModuleRegistrationHelper.RegisterModule(new Mongo.Builder.Builder());
-            var containerBuilder = AutofacModuleRegistrationHelper.RegisterAll();
-
             //compile services registrations as autofac registrations
             //this functionality provided by Autofac.Extensions.DependencyInjection
-            containerBuilder.Populate(services);
+            builder.Populate(services);
 
-            container = containerBuilder.Build();
+            //add autofac registrations
+            //This has a pretty low manageability, because of exhaustive strong coupling, but it is what it is
+            //TODO define less aggressive module registration practices
+            AutofacModuleRegistrationHelper.RegisterModule(new Autofac.Builder.Builder(container));
+            //AutofacModuleRegistrationHelper.RegisterModule(new Mongo.Builder.Builder());
+            AutofacModuleRegistrationHelper.RegisterAll(builder);
+
+            container = builder.Build();
 
             return container.Resolve<IServiceProvider>();
         }
@@ -63,7 +69,7 @@ namespace Gestalt
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+           
             app.UseIISPlatformHandler();
 
             app.UseApplicationInsightsRequestTelemetry();
